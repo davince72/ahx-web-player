@@ -242,6 +242,19 @@ WebAHX.playSong = function() {
             {
                 slider.value = WebAHX.Master.Output.Player.PosNr;
             }
+            if(WebAHX.Master.Output.Player.SongEndReached)
+            {
+                var list = document.querySelectorAll("z");
+
+                for(var i = 0; i < list.length; i++)
+                {
+                    if(list[i].className === "selected")
+                    {
+                        list[i + 1].click();
+                        break;
+                    }
+                }
+            }
         }, 25);
         clearInterval(lol2);
         pad=(i,x=3,y=0)=>{return`${i}`.padStart(x,y)}
@@ -259,19 +272,6 @@ WebAHX.playSong = function() {
         
         currentSong.appendChild(slider);
         currentSong.appendChild(slider2);
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     });
     var name = WebAHX.list[this.Q].name.split("/");
